@@ -107,6 +107,7 @@
         }
 
         inicializar() {
+          this.elegirColor = this.elegirColor.bind(this)
           btnEmpezar.classList.add('hide')
           this.nivel = 1
           this.colores = {
@@ -127,6 +128,7 @@
 
         siguienteNivel() {
           this.iluminarSecuencia()
+          this.agregarEventosClick()
         }
 
         transformarNumeroAColor(num) {
@@ -158,6 +160,20 @@
 
         apagarColor(color) {
           this.colores[color].classList.remove('light')
+        }
+
+        agregarEventosClick() {
+          this.colores.celeste.addEventListener('click', this.elegirColor)
+          this.colores.violeta.addEventListener('click', this.elegirColor)
+          this.colores.naranja.addEventListener('click', this.elegirColor)
+          this.colores.verde.addEventListener('click', this.elegirColor)
+
+          // addEventListener para agregar eventos click a los colores.
+          //importante atar con .bind el this en un addeventlistener por que representa a un elemento del dom
+        }
+
+        elegirColor(ev) {
+          console.log(this)
         }
       }
 
